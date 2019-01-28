@@ -1,0 +1,51 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: black;
+  padding: 10px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  &-photo {
+    border-radius: 50%;
+    background-color: #fff;
+    width: 150px;
+    height: 150px;
+    background: url(../img/default-poo.png) no-repeat center;
+    @include border-radius(50%);
+    background-color: #fff;
+  }
+  &-profile {
+    margin-top: $margs;
+    color: #fff;
+    font: {
+      size: 2em;
+      weight: bold;
+    }
+  }
+}
+.nav {
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 100px 0;
+    color: #fff;
+    li {
+      margin: 10px 0;
+      font: {
+        size: 2em;
+      }
+      a {
+        color: #fff;
+      }
+    }
+  }
+}

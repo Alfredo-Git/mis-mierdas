@@ -1,0 +1,29 @@
+#container {
+  display: flex;
+  justify-content: flex-end;
+}
+.content {
+  width: calc(100% - 220px);
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    li {
+      max-width: 400px;
+      width: 100%;
+      height: 300px;
+      margin: $margs;
+      background-color: #000;
+    }
+  }
+}
+.row {
+  padding: $margs;
+  h1 {
+    font: {
+      size: 2em;
+      weight: bold;
+    }
+  }
+}

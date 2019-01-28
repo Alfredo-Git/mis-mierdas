@@ -1,0 +1,173 @@
+// PRESETS COLOURS
+$primary-color: #000;
+$secondary-Color: #717274;
+
+$black: black;
+$white: white;
+$greyDark: #8e8e8e;
+$grey: #e5e5e5;
+$greyLight: #eeeeee;
+$sendYes: #7BB24D;
+$sendNo: #ff6464;
+$linkArticle: #c0091f;
+$transparent-white: rgba(255, 255, 255, 0.7);
+$transparent-black: rgba(0, 0, 0, 0.7);
+$transparent-grey: rgba(0, 0, 0, 0.95);
+
+// PRESETS DIMENSIONS
+$height-header: 120px;
+$width-content: 980px;
+$max-width: 100%;
+$margs: 20px;
+
+//PRESETS FONTS
+$primary-font: 'Roboto', sans-serif;
+$secondary-font: 'Karla', sans-serif;
+$special-font: 'Caveat', cursive;
+
+
+//MIXIN CSS
+
+%imgCover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// PRESETS PRE
+@mixin aspect-ratio ($ratio) {
+  padding-bottom: percentage( nth($ratio, 2) / nth($ratio, 1))
+}
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+@mixin scale($scale) {
+  -webkit-transform: scale($scale);
+  -moz-transform: scale($scale);
+  -ms-transform: scale($scale);
+  -o-transform: scale($scale);
+  transform: scale($scale);
+}
+@mixin background-size($size) {
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  -ms-background-size: $size;
+  -o-background-size: $size;
+  background-size: $size;
+}
+@mixin gradient($gradient1, $gradient2, $gradient3) {
+  background: -webkit-linear-gradient($gradient1 , $gradient2, $gradient3); 
+  background: -moz-linear-gradient($gradient1 , $gradient2, $gradient3);
+  background: -ms-linear-gradient($gradient1 , $gradient2, $gradient3);
+  background: -o-linear-gradient($gradient1 , $gradient2, $gradient3);
+  background: linear-gradient($gradient1 , $gradient2, $gradient3);
+}
+@mixin rotate($rdeg) {
+  -webkit-transform: rotate($rdeg);
+  -moz-transform: rotate($rdeg);
+  -ms-transform: rotate($rdeg);
+  -o-transform: rotate($rdeg);
+  transform: rotate($rdeg);
+}
+@mixin border-radius($border-radius) {
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  -ms-border-radius: $border-radius;
+  -o-border-radius: $border-radius;
+  border-radius: $border-radius;
+}
+@mixin childs($backgroundcolor, $color) {
+  background-color: $backgroundcolor;
+  color: $color;
+}
+@mixin animation($animation-name) {
+  -webkit-animation-name: $animation-name;
+  -moz-animation-name: $animation-name;
+  -ms-animation-name: $animation-name;
+  -o-animation-name: $animation-name;
+  animation-name: $animation-name;
+}
+@mixin animationDuration($animation-duration) {
+  -webkit-animation-duration: $animation-duration;
+  -moz-animation-duration: $animation-duration;
+  -ms-animation-duration: $animation-duration;
+  -o-animation-duration: $animation-duration;
+  animation-duration: $animation-duration;
+}
+@mixin shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -ms-box-shadow: $shadow;
+  -o-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+@mixin textShadow($textShadow) {
+  -webkit-text-shadow: $textShadow;
+  -moz-text-shadow: $textShadow;
+  -ms-text-shadow: $textShadow;
+  -o-text-shadow: $textShadow;
+  text-shadow: $textShadow;
+}
+@mixin animationFeature($fill-mode, $iteration-count, $animation-duration) {
+  -webkit-animation-fill-mode: $fill-mode;
+  -moz-animation-fill-mode: $fill-mode;
+  -ms-animation-fill-mode: $fill-mode;
+  -o-animation-fill-mode: $fill-mode;
+  animation-fill-mode: $fill-mode;
+  -webkit-animation-iteration-count: $iteration-count;
+  -moz-animation-iteration-count: $iteration-count;
+  -ms-animation-iteration-count: $iteration-count;
+  -o-animation-iteration-count: $iteration-count;
+  animation-iteration-count: $iteration-count;
+  -webkit-animation-duration: $animation-duration;
+  -moz-animation-duration: $animation-duration;
+  -ms-animation-duration: $animation-duration;
+  -o-animation-duration: $animation-duration;
+  animation-duration: $animation-duration;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+// BREAKPOINTS
+@mixin for-size($size) {
+  @if $size == phone {                                                // phone-only
+    @media (max-width: 690px) { @content; }
+  } @else if $size == tablet-portrait-up {                            // tablet-portrait-up
+    @media (max-width: 700px) { @content; }
+  } @else if $size == tablet-portait-only {                           // tablet-portait-only
+    @media (min-width: 600px) and (max-width: 899px) { @content; } 
+  } @else if $size == tablet {                                        // tablet-landscape-up
+    @media (max-width: 970px) { @content; }
+  } @else if $size == tablet-landscape-only {                         // tablet-landscape-only
+    @media (min-width: 900px) and (max-width: 1269px) { @content; } 
+  } @else if $size == desktop-up {                                    // desktop-up
+    @media (max-width: 1200px) { @content; }
+  } @else if $size == desktop-only {                                  // desktop-only
+    @media (min-width: 1200px) and (max-width: 1799px) { @content; } 
+  } @else if $size == big-desktop-up {                                // big-desktop-up
+    @media (max-width: 1500px) { @content; }
+  } @else if $size == desktop-min {                                   // big-desktop-special-minsize 
+    @media (max-width: 1100px) { @content; }
+  } @else if $size == desktop {                                       // big-desktop-special-changesize
+    @media (max-width: 1270px) { @content; }
+  } @else if $size == sponsor {                                          // skin (for values of css sponsors)
+    @media (min-width: 1000px) { @content; }
+  }
+}
