@@ -9,12 +9,17 @@ const mongoSession = require('mongo-session');
 const passport = require('passport');
 const mongoose = require('mongoose');
 
+const usersRouter = require('./routes/users.routes');
+
+
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/register', usersRouter);
 
 module.exports = app;
 
