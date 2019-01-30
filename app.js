@@ -11,6 +11,8 @@ const mongoose = require('mongoose');
 
 const usersRouter = require('./routes/users.routes');
 
+const pruebaUtils = require('./utils/prueba');
+
 
 const app = express();
 
@@ -20,6 +22,8 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/register', usersRouter);
+
+pruebaUtils.addNumbers(2,3);
 
 module.exports = app;
 
