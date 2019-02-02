@@ -9,9 +9,16 @@ module.exports.createWithIDPCallback = (req, res, next) => {
         if (error) {
           next(error)
         } else {
-          res.redirect(`/users`)
+          res.redirect(`/user/profile`)
         }
       });
     }
   })(req, res, next);
 }
+
+module.exports.profile = (req, res, next) => {
+  res.redirect('/user/profile');
+}
+
+
+
