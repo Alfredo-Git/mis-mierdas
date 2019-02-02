@@ -1,0 +1,19 @@
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.btn{
+  &-google {
+    width: 150px;
+    min-height: 50px;
+    padding: 10px;
+    border: 0;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    @include border-radius(10px);
+  }
+} 

@@ -1,0 +1,23 @@
+const constants = require('../constants');
+const mongoose = require('mongoose');
+const FIRST_ADMIN_EMAIL = process.env.FIRST_ADMIN_EMAIL;
+const User = require('./user.model');
+
+const mierdaSchema = new mongoose.Schema({
+  user : {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String,
+    unique: true
+  },
+}, { timestamps: true });
+
+
+const Mierda = mongoose.model('Mierda', userSchema);
+module.exports = Mierda;
