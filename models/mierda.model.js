@@ -5,7 +5,7 @@ const User = require('./user.model');
 
 const mierdaSchema = new mongoose.Schema({
   user : {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
   name: {
@@ -19,5 +19,5 @@ const mierdaSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-const Mierda = mongoose.model('Mierda', userSchema);
+const Mierda = mongoose.model('Mierda', mierdaSchema);
 module.exports = Mierda;
