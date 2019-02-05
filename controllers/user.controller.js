@@ -27,13 +27,22 @@ module.exports.profile = (req, res, next) => {
 }
 
 module.exports.createMierda = (req, res, next) => {
-  console.log(req.body)
   const mierda = new Mierda(req.body);
-
   mierda.save()
     .then(post => res.redirect('/user/mis-mierdas'))
     .catch(error => next(error))
-  
+}
+
+module.exports.deleteMierda = (req, res, next) => {
+  Mierda.findByIdAndRemove(req.params.id)
+    .then(mierda => {
+      if (!mierda) {
+        next(createError(404, 'User not found'));
+      } else {
+        res.redirect('/user/mis-mierdas');
+      }
+    })
+    .catch(error => next(error));
 }
 
 

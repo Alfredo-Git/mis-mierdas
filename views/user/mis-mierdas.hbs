@@ -8,11 +8,14 @@
     <li>
       <div class="box">
         <div class="icons">
-          <i class="fas fa-trash-alt"></i>
+          <form action="/user/mis-mierdas/{{mierda.id}}/delete" method="post">
+            <button type="submit"><i class="fas fa-trash-alt"></i></button>
+          </form> 
           <a href="{{mierda.url}}" target="_blank"><i class="fas fa-link"></i></a>
         </div>
       </div>
-      <h2>{{mierda.name}}</h2></li>
+      <h2>{{mierda.name}}</h2>
+    </li>
     {{/each}}
   </ul>
 </div>
