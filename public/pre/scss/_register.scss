@@ -3,17 +3,41 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: linear-gradient(312deg, #6e9bd3, #3e6698, #bfbda4, #f7b500, #e87000, #d5f7f7);
+  background-size: 1200% 1200%;
+  -webkit-animation: AnimationName 16s ease infinite;
+  -moz-animation: AnimationName 16s ease infinite;
+  -ms-animation: AnimationName 16s ease infinite;
+  -o-animation: AnimationName 16s ease infinite;
+  animation: AnimationName 16s ease infinite;
+  &-poo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 300px;
+    height: 250px;
+    background: url(../img/poo-white.png) no-repeat center;
+    background-size: cover;
+  }
 }
 
-.btn{
-  &-google {
-    width: 150px;
-    min-height: 50px;
-    padding: 10px;
-    border: 0;
-    background-color: red;
-    color: white;
-    cursor: pointer;
-    @include border-radius(10px);
-  }
-} 
+@-webkit-keyframes AnimationName {
+  0%{background-position:99% 0%}
+  50%{background-position:2% 100%}
+  100%{background-position:99% 0%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:99% 0%}
+  50%{background-position:2% 100%}
+  100%{background-position:99% 0%}
+}
+@-o-keyframes AnimationName {
+  0%{background-position:99% 0%}
+  50%{background-position:2% 100%}
+  100%{background-position:99% 0%}
+}
+@keyframes AnimationName { 
+  0%{background-position:99% 0%}
+  50%{background-position:2% 100%}
+  100%{background-position:99% 0%}
+}

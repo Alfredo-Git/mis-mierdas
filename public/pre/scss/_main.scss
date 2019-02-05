@@ -1,24 +1,54 @@
 #container {
   display: flex;
   justify-content: flex-end;
+  min-height: 100vh;
+  height: 100%;
 }
 .content {
-  width: calc(100% - 220px);
+  width: calc(100% - 60px);
+  background-color: $white;
   ul {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     padding: 10px;
     li {
       max-width: 300px;
       width: 100%;
-      height: 200px;
+      height: 220px;
       margin: $margs;
-      background-color: #fff;
+      h2 {
+        padding: 10px 0;
+        color: #000;
+      }
+      & .box {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        background-color: #fff;
+        overflow: hidden;
+        @include border-radius(10px);
+        & .icons {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          height: $margs;
+          padding: 10px 0;
+          color: #fff;
+          background-color: $blue-dark;
+          a {
+            padding: 0 10px;
+            color: #fff;
+          }
+        }
+      }  
     }
   }
 }
 .row {
+  margin: 50px 0 0 0;
   padding: $margs;
   h1 {
     font: {
@@ -27,3 +57,21 @@
     }
   }
 }
+
+.btn{
+  padding: 10px;
+  border: 0;
+  cursor: pointer;
+  @include border-radius(10px);
+  &-google {
+    width: 150px;
+    min-height: 50px;
+    background-color: red;
+    border: 5px solid #fff;
+    color: white;
+  }
+  &-send {
+    background-color: $orange-light;
+    color: white;
+  }
+} 

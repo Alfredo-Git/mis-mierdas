@@ -1,0 +1,33 @@
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $width-aside;
+  height: 100vh;
+  padding: 10px;
+  background-color: $blue-dark;
+  overflow: hidden;
+}
+
+.nav {
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 55px 0;
+    color: #fff;
+    li {
+      margin: 10px 0;
+      font: {
+        size: 1.5em;
+      }
+      a {
+        display: flex;
+        color: #fff;
+        p {
+          width: $width-aside;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

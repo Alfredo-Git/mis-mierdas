@@ -1,18 +1,18 @@
 <div class="content">
   <div class="row">
     <h1>Todas mis mierdas</h1>
-    <form action="/user/mis-mierdas" method="post">
-      <input type="text" name="name" placeholder="Title...">
-      <input type="text" name="url" placeholder="http://...">
-      <button class="sending-mierda" type="submit"><i class=""></i>send mierda</button>
-    </form>
   </div>
 
   <ul>
     {{#each mierdas as |mierda| }}
-    <li>{{mierda.name}}{{mierda.url}}</li>
+    <li>
+      <div class="box">
+        <div class="icons">
+          <i class="fas fa-trash-alt"></i>
+          <a href="{{mierda.url}}" target="_blank"><i class="fas fa-link"></i></a>
+        </div>
+      </div>
+      <h2>{{mierda.name}}</h2></li>
     {{/each}}
-    {{mierdas}}
-    
   </ul>
 </div>

@@ -1,21 +1,16 @@
 // PRESETS COLOURS
-$primary-color: #000;
-$secondary-Color: #717274;
+$blue-light: #6e9bd3;
+$blue-dark: #3e6698;
+$golden-old: #bfbda4;
+$orange-light: #f7b500;
+$orange-dark: #e87000;
+$white: #f6f8f8;
 
-$black: black;
-$white: white;
-$greyDark: #8e8e8e;
-$grey: #e5e5e5;
-$greyLight: #eeeeee;
-$sendYes: #7BB24D;
-$sendNo: #ff6464;
-$linkArticle: #c0091f;
-$transparent-white: rgba(255, 255, 255, 0.7);
-$transparent-black: rgba(0, 0, 0, 0.7);
-$transparent-grey: rgba(0, 0, 0, 0.95);
+$input-placeholder: $golden-old;
 
 // PRESETS DIMENSIONS
-$height-header: 120px;
+$height-header: 50px;
+$width-aside: 40px;
 $width-content: 980px;
 $max-width: 100%;
 $margs: 20px;
@@ -24,7 +19,6 @@ $margs: 20px;
 $primary-font: 'Roboto', sans-serif;
 $secondary-font: 'Karla', sans-serif;
 $special-font: 'Caveat', cursive;
-
 
 //MIXIN CSS
 
