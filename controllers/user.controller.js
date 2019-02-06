@@ -21,13 +21,22 @@ module.exports.createWithIDPCallback = (req, res, next) => {
 }
 
 module.exports.profile = (req, res, next) => {
-  Mierda.find()
+  Mierda.find( { user: res.locals.session } )
     .then(mierdas => res.render('user/mis-mierdas', {mierdas}))
     .catch(error => next(error))
 }
 
 module.exports.createMierda = (req, res, next) => {
-  const mierda = new Mierda(req.body);
+  const datos = req.body
+  datos.user = res.locals.session
+  datos.type = 'web'
+  if (datos.name === '') {
+    datos.name = 'mierdón'
+  }
+  if (datos.url.match(/(youtube|vimeo|streamable)/i) ||
+      datos.url.match(/.mp4$/i)) { datos.type = 'video', datos.video = true }
+
+  const mierda = new Mierda(datos);
   mierda.save()
     .then(post => res.redirect('/user/mis-mierdas'))
     .catch(error => next(error))

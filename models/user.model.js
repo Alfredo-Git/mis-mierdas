@@ -18,9 +18,6 @@ const userSchema = new mongoose.Schema({
     enum: [constants.ROLE_ADMIN, constants.ROLE_USER],
     default: constants.ROLE_USER
   },
-  mierdas: [{ 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'Mierda' }]
 }, { timestamps: true });
 
 

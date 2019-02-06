@@ -27,6 +27,19 @@
         background-color: #fff;
         overflow: hidden;
         @include border-radius(10px);
+        & .zoom-nail {
+          position: relative;
+          padding-bottom: 45.25%;
+          padding-top: 25px;
+          height: 0;
+          iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
         & .icons {
           position: absolute;
           bottom: 0;

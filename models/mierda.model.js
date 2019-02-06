@@ -16,6 +16,16 @@ const mierdaSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
+  type: {
+    type: String,
+    required: true
+  },
+  video: {
+    type: Boolean
+  },
+  web: {
+    type: Boolean
+  }  
 }, { timestamps: true });
 
 
