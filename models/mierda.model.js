@@ -20,6 +20,9 @@ const mierdaSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  youtubeID:{
+    type: String
+  },
   video: {
     type: Boolean
   },
