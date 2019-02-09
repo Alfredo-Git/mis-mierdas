@@ -13,46 +13,41 @@ module.exports.createWithIDPCallback = (req, res, next) => {
           next(error)
         } else {
           User.find()
-          res.redirect('/user/mis-mierdas')
+          res.redirect('/videos')
         }
       });
     }
   })(req, res, next);
 }
 
-module.exports.profile = (req, res, next) => {
+module.exports.getMierdaVideo = (req, res, next) => {
   Mierda.find( { user: res.locals.session } )
-    .then(mierdas => res.render('user/mis-mierdas', {mierdas}))
+    .then(mierdas => res.render('videos', {mierdas}))
     .catch(error => next(error))
 }
 
-module.exports.createMierda = (req, res, next) => {
+module.exports.createMierdaVideo = (req, res, next) => {
   const datos = req.body
   datos.user = res.locals.session
-  datos.type = 'web'
-  datos.web = true 
+  datos.type = 'video'
+  datos.video = true 
   if (datos.name === '') {
     datos.name = 'mierdón'
-  }
-  if (datos.url.match(/(youtube|vimeo|streamable)/i) ||
-      datos.url.match(/.mp4$/i)) { datos.type = 'video', datos.video = true, datos.web = false }
-  if (datos.url.match(/(youtube)/i)) {
-    
   }
 
   const mierda = new Mierda(datos);
   mierda.save()
-    .then(post => res.redirect('/user/mis-mierdas'))
+    .then(post => res.redirect('/videos'))
     .catch(error => next(error))
 }
 
-module.exports.deleteMierda = (req, res, next) => {
+module.exports.deleteMierdaVideo = (req, res, next) => {
   Mierda.findByIdAndRemove(req.params.id)
     .then(mierda => {
       if (!mierda) {
         next(createError(404, 'User not found'));
       } else {
-        res.redirect('/user/mis-mierdas');
+        res.redirect('/videos');
       }
     })
     .catch(error => next(error));

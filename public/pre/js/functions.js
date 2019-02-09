@@ -1,11 +1,10 @@
-function show (name) {
-    console.log('this is my' + name)
-};
-
-show('Carlos');
-
-const show = (name) => {
-    console.log('this is my' + name)
-};
-
-show('Pepe'); 
+$( document ).ready(function(){
+  $(".fa-pencil-alt").click(function(){
+    $(this).parents("li").find(".box-info").css("margin-top","-25px");
+    $(this).parents("li").find(".box-info-content").css("height","45px");
+  })
+  $(".fa-times.close").click(function(){
+    $(this).parents("li").find(".box-info").css("margin-top","0");
+    $(this).parents("li").find(".box-info-content").css("height","35px");
+  })
+});

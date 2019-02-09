@@ -16,6 +16,8 @@ require('./configs/passport.config');
 
 const indexRouter = require('./routes/index.routes');
 const userRouter = require('./routes/user.routes');
+const videoRouter = require('./routes/video.routes');
+const webRouter = require('./routes/web.routes');
 
 const app = express();
 
@@ -53,6 +55,8 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/videos', videoRouter);
+app.use('/urls', webRouter);
 
 
 // catch 404 and forward to error handler

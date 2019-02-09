@@ -1,2 +1,2 @@
-"use strict";function show(o){console.log("this is my"+o)}var show;function suma(o,s){console.log(o+s)}show("Carlos"),(show=function(o){console.log("this is my"+o)})("Pepe"),suma(1,2);
+"use strict";function suma(i,n){console.log(i+n)}$(document).ready(function(){$(".fa-pencil-alt").click(function(){$(this).parents("li").find(".box-info").css("margin-top","-25px"),$(this).parents("li").find(".box-info-content").css("height","45px")}),$(".fa-times.close").click(function(){$(this).parents("li").find(".box-info").css("margin-top","0"),$(this).parents("li").find(".box-info-content").css("height","35px")})}),suma(1,2);
 //# sourceMappingURL=functions.js.map

@@ -11,15 +11,27 @@
           {{#if mierda.video}}
           <iframe width="560" height="315" src="https://www.youtube.com/embed/gl2pNvHgRGI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           {{/if}}
+          {{#if mierda.web}}
+          <p>es una URL</p>
+          {{/if}}
         </div>
         <div class="icons">
+            <i class="fas fa-pencil-alt"></i>
           <form action="/user/mis-mierdas/{{mierda.id}}/delete" method="post">
             <button type="submit"><i class="fas fa-trash-alt"></i></button>
           </form> 
           <a href="{{mierda.url}}" target="_blank"><i class="fas fa-link"></i></a>
         </div>
       </div>
-      <h2>{{mierda.name}}</h2>
+      <div class="box-info-content">
+        <div class="box-info"></div>
+          <h2>{{mierda.name}}</h2>
+          <form action="???" method="post">
+            <input type="text" name="name" placeholder="{{mierda.name}}">
+            <button class="btn btn-send" type="submit"><i class="fas fa-pencil-alt"></i> update</button>
+            <i class="fas fa-times close"></i>
+          </form>
+      </div>
     </li>
     {{/each}}
   </ul>
