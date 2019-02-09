@@ -17,8 +17,7 @@ const mierdaSchema = new mongoose.Schema({
     unique: true
   },
   type: {
-    type: String,
-    required: true
+    type: String
   },
   youtubeID:{
     type: String

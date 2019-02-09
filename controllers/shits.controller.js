@@ -6,8 +6,10 @@ const getYouTubeID = require('get-youtube-id');
 const resourcesService = require('../services/resource.service');
 
 module.exports.list = (req, res, next) => {
-  Mierda.find({ user: res.user.id } )
-    .then(mierdas => res.render('shits/list', {mierdas}))
+  Mierda.find({ user: req.user.id } )
+    .then(mierdas => {
+      res.render('shits/list', {mierdas})
+    })
     .catch(error => next(error))
 }
 
@@ -15,9 +17,12 @@ module.exports.doCreate = (req, res, next) => {
   const { url, name } = req.body;
   resourcesService.get(url)
     .then(data => {
+      console.log({data});
       const shit = new Mierda(data);
+      console.log(shit)
       // TODO: feed shit
-      //return shit.save().then(...);
+      return shit.save()
+      .then(shit => res.redirect('/shits/list'))
     })
     .catch(error => next(error));
 }
@@ -51,10 +56,8 @@ module.exports.doDelete = (req, res, next) => {
       if (!mierda) {
         next(createError(404, `Mierda ${req.params.id} not found`));
       } else {
-        res.redirect('/user/mis-mierdas');
+        res.redirect('/shits/delete');
       }
     }).catch(error => next(error));
 }
-
-
 
