@@ -15,6 +15,7 @@ require('./configs/hbs.config');
 require('./configs/passport.config');
 
 const indexRouter = require('./routes/index.routes');
+const shitsRouter = require('./routes/shits.routes');
 const userRouter = require('./routes/user.routes');
 const videoRouter = require('./routes/video.routes');
 const webRouter = require('./routes/web.routes');
@@ -54,6 +55,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/', indexRouter);
+app.use('/shits', shitsRouter);
 app.use('/user', userRouter);
 app.use('/videos', videoRouter);
 app.use('/urls', webRouter);
