@@ -5,7 +5,8 @@ const router = express.Router();
 const shitsController = require('../controllers/shits.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 
-router.get('/list', authMiddleware.isAuthenticated, shitsController.list);
-router.post('/list', authMiddleware.isAuthenticated, shitsController.doCreate);
+router.get('/', authMiddleware.isAuthenticated, shitsController.list);
+router.post('/', authMiddleware.isAuthenticated, shitsController.doCreate);
+router.post('/:id/delete', authMiddleware.isAuthenticated, shitsController.doDelete);
 
 module.exports = router;

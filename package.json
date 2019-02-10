@@ -28,6 +28,7 @@
     "mongo-session": "^0.2.15",
     "mongoose": "^5.4.8",
     "morgan": "^1.9.1",
+    "open-graph-scraper": "^3.6.0",
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
     "path": "^0.12.7",

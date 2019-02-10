@@ -14,7 +14,7 @@ module.exports.createWithIDPCallback = (req, res, next) => {
           next(error)
         } else {
           User.find()
-          res.redirect('/shits/list')
+          res.redirect('/shits')
         }
       });
     }

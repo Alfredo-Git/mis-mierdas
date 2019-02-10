@@ -1,35 +1,34 @@
 const constants = require('../constants');
 const mongoose = require('mongoose');
-const FIRST_ADMIN_EMAIL = process.env.FIRST_ADMIN_EMAIL;
-const User = require('./user.model');
+const getYouTubeID = require('get-youtube-id');
 
 const mierdaSchema = new mongoose.Schema({
   user : {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   },
   name: {
     type: String,
     required: true
   },
-  url: {
-    type: String,
-    unique: true
-  },
-  type: {
-    type: String
-  },
-  youtubeID:{
-    type: String
-  },
-  video: {
-    type: Boolean
-  },
-  web: {
-    type: Boolean
-  }  
+  publisher: String,
+  url: String,
+  title: String,
+  description: String,
+  tags: [String],
+  videos: [String],
+  thumbnail: String
 }, { timestamps: true });
 
+mierdaSchema.virtual('youtubeId')
+  .get(function () {
+    return (this.publisher === 'YouTube') ? getYouTubeID(this.url) : undefined;
+  });
+mierdaSchema.virtual('vimeoId')
+.get(function () {
+  return (this.publisher === 'Vimeo') ? getYouTubeID(this.url) : undefined;
+});
 
 const Mierda = mongoose.model('Mierda', mierdaSchema);
 module.exports = Mierda;
