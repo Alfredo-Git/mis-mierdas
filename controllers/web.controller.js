@@ -8,7 +8,7 @@ const resourcesService = require('../services/resource.service');
 module.exports.list = (req, res, next) => {
   Mierda.find({ user: req.user.id } )
     .then(mierdas => {
-      res.render('videos', { mierdas })
+      res.render('webs', { mierdas })
     })
     .catch(error => next(error))
 }

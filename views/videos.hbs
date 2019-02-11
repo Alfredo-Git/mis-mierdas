@@ -10,7 +10,9 @@
       <li>
         <div class="box">
           <div class="zoom-nail">
+            {{#if mierda.youtube}}  
             <iframe width="560" height="315" src="https://www.youtube.com/embed/{{mierda.youtubeId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {{/if}}  
           </div>
           <div class="icons">
             <form action="/user/mis-mierdas/{{mierda.id}}/delete" method="post">

@@ -19,27 +19,13 @@ const mierdaSchema = new mongoose.Schema({
   description: String,
   tags: [String],
   videos: [String],
-  thumbnail: String,
-  type: String,
-  video: Boolean,
-  web: Boolean,
-  youtube: Boolean,
-  vimeo: Boolean,
-  videopress: Boolean,
+  thumbnail: String
 }, { timestamps: true });
 
-mierdaSchema.virtual('youtubeId')
+mierdaSchema.virtual('videoId')
   .get(function () {
-    return (this.publisher === 'YouTube') ? getVideoId(this.url).id : undefined;
+    return getVideoId(this.url).id;
   });
-mierdaSchema.virtual('vimeoId')
-.get(function () {
-  return (this.publisher === 'Vimeo') ? getVideoId(this.url).id : undefined;
-});
-mierdaSchema.virtual('videoPressId')
-.get(function () {
-  return (this.publisher === 'videoPress') ? getVideoId(this.url).id : undefined;
-});
 
 const Mierda = mongoose.model('Mierda', mierdaSchema);
 module.exports = Mierda;

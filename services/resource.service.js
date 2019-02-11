@@ -1,4 +1,5 @@
 const ogs = require('open-graph-scraper');
+const getVideoId = require('get-video-id');
 
 module.exports.get = (url) => {
   return ogs({
@@ -7,11 +8,11 @@ module.exports.get = (url) => {
     maxRedirects: 5
   }).then(res => {
     const data = res.data;
-    data.publisher = url.includes('youtube') ? 'YouTube' : 'unk';
+    data.publisher = getVideoId(url).service;
     const info = {
       title: data.ogTitle,
-      publisher: data.publisher,
-      videos: (data.publisher === 'YouTube') ? [url] : [],
+      publisher: data.publisher || '',
+      videos: (data.publisher) ? [url] : [],
       thumbnail: data.ogImage.url,
       url: url,
       description: data.ogDescription,

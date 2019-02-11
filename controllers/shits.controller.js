@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Mierda = require('../models/mierda.model')
 const User = require('../models/user.model')
 const getYouTubeID = require('get-youtube-id');
+const getVideoId = require('get-video-id');
 const resourcesService = require('../services/resource.service');
 
 module.exports.list = (req, res, next) => {
@@ -20,11 +21,6 @@ module.exports.doCreate = (req, res, next) => {
       const mierda = new Mierda(datos);
       mierda.user = req.user.id;
       mierda.name = name;
-      mierda.type = 'web';
-      mierda.web = true;
-      if (datos.url.match(/(youtube|vimeo|videopress)/i) ||
-      datos.url.match(/.mp4$/i)) { mierda.type = 'video', mierda.video = true, mierda.web = false }
-
       return mierda.save()
          .then(mierda => res.redirect('/shits'))
     })
