@@ -17,10 +17,14 @@ module.exports.doCreate = (req, res, next) => {
   const { url, name } = req.body;
   resourcesService.get(url)
     .then(datos => {
-      console.log(datos);
       const mierda = new Mierda(datos);
       mierda.user = req.user.id;
       mierda.name = name;
+      mierda.type = 'web';
+      mierda.web = true;
+      if (datos.url.match(/(youtube|vimeo|videopress)/i) ||
+      datos.url.match(/.mp4$/i)) { mierda.type = 'video', mierda.video = true, mierda.web = false }
+
       return mierda.save()
          .then(mierda => res.redirect('/shits'))
     })
