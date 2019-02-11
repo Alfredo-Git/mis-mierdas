@@ -8,5 +8,6 @@ const authMiddleware = require('../middlewares/auth.middleware');
 router.get('/', authMiddleware.isAuthenticated, shitsController.list);
 router.post('/', authMiddleware.isAuthenticated, shitsController.doCreate);
 router.post('/:id/delete', authMiddleware.isAuthenticated, shitsController.doDelete);
+router.post('/:id/update', authMiddleware.isAuthenticated, shitsController.update);
 
 module.exports = router;
