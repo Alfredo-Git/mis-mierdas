@@ -4,25 +4,32 @@
   </div>
 
   <ul>
-    
     {{#each mierdas as |mierda| }}
-      {{#if mierda.web}}  
-      <li>
-        <div class="box">
-          <div class="zoom-nail">
-            <p>es una URL</p>
-          </div>
-          <div class="icons">
-            <form action="/user/mis-mierdas/{{mierda.id}}/delete" method="post">
-              <button type="submit"><i class="fas fa-trash-alt"></i></button>
-            </form> 
-            <a href="{{mierda.url}}" target="_blank"><i class="fas fa-link"></i></a>
-          </div>
+    {{#if mierda.urlWeb }}
+    <li>
+      <div class="box">
+        <div class="zoom-nail">
+          <img src="{{mierda.thumbnail}}" alt="{{mierda.name}}">
         </div>
-        <h2>{{mierda.name}}</h2>
-      </li>
-      {{/if}}
-    {{/each}}
-    
+        <div class="icons">
+            <i class="fas fa-pencil-alt"></i>
+          <form action="/shits/{{mierda.id}}/delete" method="post">
+            <button type="submit"><i class="fas fa-trash-alt"></i></button>
+          </form> 
+          <a href="{{mierda.url}}" target="_blank"><i class="fas fa-link"></i></a>
+        </div>
+      </div>
+      <div class="box-info-content">
+        <div class="box-info"></div>
+          <h2 class="h2Names">{{mierda.name}}</h2>
+          <form action="/shits/{{mierda.id}}/update" method="post">
+            <input type="text" name="name" placeholder="{{mierda.name}}">
+            <button class="btn btn-send" type="submit"><i class="fas fa-pencil-alt"></i> update</button>
+            <i class="fas fa-times close"></i>
+          </form>
+      </div>
+    </li>
+  {{/if}}
+  {{/each}}
   </ul>
 </div>

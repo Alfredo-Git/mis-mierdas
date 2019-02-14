@@ -132,3 +132,7 @@
     color: white;
   }
 } 
+
+.vimeo {
+  @include scale(1.05)
+}

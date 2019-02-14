@@ -33,10 +33,25 @@
       weight: bold;
     }
   }
+  button {
+    margin-left: 10px;
+  }
 }
 
 .add-url {
+  display: flex;
+  align-items: center;
+  height: 100%;
   padding: 0 $margs 0 0;
+  color: #fff;
+  & .fa-search {
+    margin-left: -30px;
+  }
+  & .vertical {
+    margin: 0px 17px 0 20px;
+    border: 2px solid #fff;
+    height: 50%;
+  }
   input {
     margin: 0 10px 0 0;
     padding: 10px;

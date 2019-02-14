@@ -11,7 +11,6 @@ const mierdaSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required: true
   },
   publisher: String,
   url: String,
@@ -19,7 +18,10 @@ const mierdaSchema = new mongoose.Schema({
   description: String,
   tags: [String],
   videos: [String],
-  thumbnail: String
+  thumbnail: String,
+  favorite: Boolean,
+  urlVideo: Boolean,
+  urlWeb: Boolean
 }, { timestamps: true });
 
 mierdaSchema.virtual('videoId')

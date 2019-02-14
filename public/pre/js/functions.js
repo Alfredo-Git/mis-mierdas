@@ -1,5 +1,3 @@
-console.log('a ver');
-
 $( document ).ready(function(){
   $(".fa-pencil-alt").click(function(){
     $(this).parents("li").find(".box-info").css("margin-top","-25px");
@@ -13,7 +11,7 @@ $( document ).ready(function(){
 
 $(document).ready(function(){
   $('#searchBar').keyup(function(){
-     let cacas = $('.h2Names');
+     let cacas = $('h2');
      let buscandoCaca = $(this).val().toLowerCase();
      let wc='';
      for( var i = 0; i < cacas.length; i++ ){//<-----Hasta antes de aquí entra

@@ -1,5 +1,6 @@
 const passport = require('passport');
 const mongoose = require('mongoose');
+const axios = require('axios')
 const Mierda = require('../models/mierda.model')
 const User = require('../models/user.model')
 const getYouTubeID = require('get-youtube-id');
@@ -21,8 +22,26 @@ module.exports.doCreate = (req, res, next) => {
       const mierda = new Mierda(datos);
       mierda.user = req.user.id;
       mierda.name = name;
+      mierda.favorite = false;
+      mierda.urlWeb = true;
+      if (mierda.name === '') {
+        mierda.name = mierda.title
+      }
+      if (mierda.url.match(/(youtube|vimeo|streamable)/i)) { mierda.urlVideo = true, mierda.urlWeb = false }
       return mierda.save()
          .then(mierda => res.redirect('/shits'))
+    })
+    .catch(error => next(error));
+}
+
+module.exports.favorite = (req, res, next) => {
+  Mierda.findByIdAndUpdate(req.params.id, {$set: { favorite: true}})
+    .then(mierda => {
+      if (!mierda) {
+        next(createError(404, 'Mierda not found'));
+      } else {
+        res.redirect('/shits');
+      }
     })
     .catch(error => next(error));
 }

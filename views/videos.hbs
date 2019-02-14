@@ -1,30 +1,35 @@
 <div class="content">
   <div class="row">
-    <h1>videos</h1>
+    <h1>Mis vídeos</h1>
   </div>
 
   <ul>
-    
     {{#each mierdas as |mierda| }}
-      {{#if mierda.video}}  
-      <li>
-        <div class="box">
-          <div class="zoom-nail">
-            {{#if mierda.youtube}}  
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{mierda.youtubeId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            {{/if}}  
-          </div>
-          <div class="icons">
-            <form action="/user/mis-mierdas/{{mierda.id}}/delete" method="post">
-              <button type="submit"><i class="fas fa-trash-alt"></i></button>
-            </form> 
-            <a href="{{mierda.url}}" target="_blank"><i class="fas fa-link"></i></a>
-          </div>
+    {{#if mierda.urlVideo }}
+    <li>
+      <div class="box">
+        <div class="zoom-nail">
+          {{get_video_stream mierda}}
         </div>
-        <h2>{{mierda.name}}</h2>
-      </li>
-      {{/if}}
+        <div class="icons">
+            <i class="fas fa-pencil-alt"></i>
+          <form action="/shits/{{mierda.id}}/delete" method="post">
+            <button type="submit"><i class="fas fa-trash-alt"></i></button>
+          </form> 
+          <a href="{{mierda.url}}" target="_blank"><i class="fas fa-link"></i></a>
+        </div>
+      </div>
+      <div class="box-info-content">
+        <div class="box-info"></div>
+          <h2 class="h2Names">{{mierda.name}}</h2>
+          <form action="/shits/{{mierda.id}}/update" method="post">
+            <input type="text" name="name" placeholder="{{mierda.name}}">
+            <button class="btn btn-send" type="submit"><i class="fas fa-pencil-alt"></i> update</button>
+            <i class="fas fa-times close"></i>
+          </form>
+      </div>
+    </li>
+    {{/if}}
     {{/each}}
-    
   </ul>
 </div>
