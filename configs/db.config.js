@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const DB_NAME = process.env.DB_NAME || 'mis-mierdas-db';
-const MONGODB_URI = `mongodb://localhost:27017/${DB_NAME}`;
+const MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost:27017/mis-mierdas-db`;
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
     .then(() => {
