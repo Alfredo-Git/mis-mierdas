@@ -19,6 +19,7 @@ const shitsRouter = require('./routes/shits.routes');
 const userRouter = require('./routes/user.routes');
 const videoRouter = require('./routes/video.routes');
 const webRouter = require('./routes/web.routes');
+const favoriteRouter = require('./routes/favorite.routes');
 
 const app = express();
 
@@ -59,6 +60,7 @@ app.use('/shits', shitsRouter);
 app.use('/user', userRouter);
 app.use('/videos', videoRouter);
 app.use('/urls', webRouter);
+app.use('/favorites', favoriteRouter)
 
 
 // catch 404 and forward to error handler

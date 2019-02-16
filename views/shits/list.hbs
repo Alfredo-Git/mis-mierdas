@@ -19,7 +19,7 @@
         </div>
         <div class="icons">
             <form action="/shits/{{mierda.id}}/favorite" method="post">
-              <button type="submit"><i class="fas fa-star"></i></button>
+              <button type="submit"><i class="fas fa-star{{#if mierda.favorite}} favorite {{/if}}"></i></button>
             </form> 
             <i class="fas fa-pencil-alt"></i>
           <form action="/shits/{{mierda.id}}/delete" method="post">

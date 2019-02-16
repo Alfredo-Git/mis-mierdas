@@ -1,6 +1,6 @@
 const passport = require('passport');
 const mongoose = require('mongoose');
-const axios = require('axios')
+const axios = require('axios');
 const Mierda = require('../models/mierda.model')
 const User = require('../models/user.model')
 const getYouTubeID = require('get-youtube-id');
@@ -35,7 +35,9 @@ module.exports.doCreate = (req, res, next) => {
 }
 
 module.exports.favorite = (req, res, next) => {
-  Mierda.findByIdAndUpdate(req.params.id, {$set: { favorite: true}})
+  Mierda.findById(req.params.id, function(err, mierda) {
+    mierda.favorite = !mierda.favorite;
+    mierda.save()
     .then(mierda => {
       if (!mierda) {
         next(createError(404, 'Mierda not found'));
@@ -44,6 +46,7 @@ module.exports.favorite = (req, res, next) => {
       }
     })
     .catch(error => next(error));
+  })
 }
 
 /**
