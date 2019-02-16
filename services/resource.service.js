@@ -2,6 +2,7 @@ const ogs = require('open-graph-scraper');
 const getVideoId = require('get-video-id');
 
 module.exports.get = (url) => {
+  console.info('OGS => ', url)
   return ogs({
     url: url,
     followAllRedirects: true, 

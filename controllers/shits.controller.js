@@ -75,7 +75,6 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.update = (req, res, next) => {
   Mierda.findByIdAndUpdate(req.params.id, {$set: { name: req.body.name}})
     .then(mierda => {
-      // !mierda ? next(createError(404, 'Mierda not found')) : res.redirect('/shits')
       if (!mierda) {
         next(createError(404, 'Mierda not found'));
       } else {
