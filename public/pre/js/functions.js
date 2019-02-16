@@ -14,7 +14,7 @@ $(document).ready(function(){
      let cacas = $('h2');
      let buscandoCaca = $(this).val().toLowerCase();
      let wc='';
-     for( var i = 0; i < cacas.length; i++ ){//<-----Hasta antes de aquí entra
+     for( var i = 0; i < cacas.length; i++ ){
         wc = $(cacas[i]).html().toLowerCase();
           for(var x = 0; x < wc.length; x++ ){
               if( buscandoCaca.length == 0 || wc.indexOf( buscandoCaca ) > -1 ){
@@ -26,3 +26,16 @@ $(document).ready(function(){
      }
   });
 });
+
+$( document ).ready(function(){
+  $(".favorite").click(function(){
+    let favoriteId = $(this).parents("li").find(".favorite-Id").text();
+    axios.post(`/shits/${favoriteId}/favorite`)
+    console.log('pasa')
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+  })
+})
+
+
+ 

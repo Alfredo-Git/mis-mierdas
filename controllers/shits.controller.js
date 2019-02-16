@@ -35,18 +35,27 @@ module.exports.doCreate = (req, res, next) => {
 }
 
 module.exports.favorite = (req, res, next) => {
-  Mierda.findById(req.params.id, function(err, mierda) {
-    mierda.favorite = !mierda.favorite;
-    mierda.save()
+  console.info('Se hace!')
+  Mierda.findById(req.params.id)
     .then(mierda => {
-      if (!mierda) {
-        next(createError(404, 'Mierda not found'));
-      } else {
-        res.redirect('/shits');
-      }
+      console.info('MIERDON => ', mierda)
+      mierda.favorite = !mierda.favorite
+      mierda.save()
     })
-    .catch(error => next(error));
-  })
+    .catch(() => console.info('No encontramos cacota'))
+  // Mierda.findById(req.params.id, function(err, mierda) {
+  //   mierda.favorite = !mierda.favorite;
+  //   mierda.save()
+  //   .then(mierda => {
+  //     if (!mierda) {
+  //       next(createError(404, 'Mierda not found'));
+  //     } else {
+  //       console.log('axios')
+  //       // res.redirect('/shits');
+  //     }
+  //   })
+  //   .catch(error => next(error));
+  // })
 }
 
 /**

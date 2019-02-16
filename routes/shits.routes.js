@@ -9,6 +9,6 @@ router.get('/', authMiddleware.isAuthenticated, shitsController.list);
 router.post('/', authMiddleware.isAuthenticated, shitsController.doCreate);
 router.post('/:id/delete', authMiddleware.isAuthenticated, shitsController.doDelete);
 router.post('/:id/update', authMiddleware.isAuthenticated, shitsController.update);
-router.post('/:id/favorite', authMiddleware.isAuthenticated, shitsController.favorite);
+router.post('/favorite', authMiddleware.isAuthenticated, shitsController.favorite);
 
 module.exports = router;

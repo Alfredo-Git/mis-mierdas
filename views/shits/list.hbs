@@ -18,9 +18,13 @@
           {{/if}} --}}
         </div>
         <div class="icons">
-            <form action="/shits/{{mierda.id}}/favorite" method="post">
+          {{!-- Esto no debe ser un formulario, porque usas axios --}}
+          <i class="fas fa-star favorite"></i><div class="favorite-Id">{{mierda.id}}</div>
+
+            {{!-- <form action="/shits/{{mierda.id}}/favorite" method="post">
               <button type="submit"><i class="fas fa-star{{#if mierda.favorite}} favorite {{/if}}"></i></button>
-            </form> 
+            </form>  --}}
+            {{!-- --------- --}}
             <i class="fas fa-pencil-alt"></i>
           <form action="/shits/{{mierda.id}}/delete" method="post">
             <button type="submit"><i class="fas fa-trash-alt"></i></button>
