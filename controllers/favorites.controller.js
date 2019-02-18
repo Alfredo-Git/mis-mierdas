@@ -12,3 +12,41 @@ module.exports.list = (req, res, next) => {
     })
     .catch(error => next(error))
 }
+
+module.exports.favorite = (req, res, next) => {
+  Mierda.findById(req.params.id, function(err, mierda) {
+    mierda.favorite = !mierda.favorite;
+    mierda.save()
+    .then(mierda => {
+      if (!mierda) {
+        next(createError(404, 'Mierda not found'));
+      } else {
+        res.redirect('/favorites');
+      }
+    })
+    .catch(error => next(error));
+  })
+}
+
+module.exports.update = (req, res, next) => {
+  Mierda.findByIdAndUpdate(req.params.id, {$set: { name: req.body.name}})
+    .then(mierda => {
+      if (!mierda) {
+        next(createError(404, 'Mierda not found'));
+      } else {
+        res.redirect('/favorites');
+      }
+    })
+    .catch(error => next(error));
+}
+
+module.exports.doDelete = (req, res, next) => {
+  Mierda.findByIdAndRemove(req.params.id)
+    .then(mierda => {
+      if (!mierda) {
+        next(createError(404, `Mierda ${req.params.id} not found`));
+      } else {
+        res.redirect('/favorites');
+      }
+    }).catch(error => next(error));
+}

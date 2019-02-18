@@ -6,10 +6,7 @@ $( document ).ready(function(){
   $(".fa-times.close").click(function(){
     $(this).parents("li").find(".box-info").css("margin-top","0");
     $(this).parents("li").find(".box-info-content").css("height","40px");
-  })
-});
-
-$(document).ready(function(){
+  });
   $('#searchBar').keyup(function(){
      let cacas = $('h2');
      let buscandoCaca = $(this).val().toLowerCase();
@@ -24,18 +21,35 @@ $(document).ready(function(){
               }
           }
      }
+     
   });
+  document.getElementById('burger').addEventListener('click', () => {
+    const menu = document.getElementById('menuNav');
+    const body = document.querySelector('body');
+    menu.classList.add('openMenu');
+    body.classList.add('overflowHidden');
+  });
+  
+  //  close menu 
+  
+  document.getElementById('menuClose').addEventListener('click', () => {
+    const menu = document.getElementById('menuNav');
+    const body = document.querySelector('body');
+    menu.classList.remove('openMenu');
+    body.classList.remove('overflowHidden');
+  });
+  // ul = $('.content ul');
+  // ul.children().each(function(i,li){ul.prepend(li)})
 });
 
-$( document ).ready(function(){
-  $(".favorite").click(function(){
-    let favoriteId = $(this).parents("li").find(".favorite-Id").text();
-    axios.post(`/shits/${favoriteId}/favorite`)
-    console.log('pasa')
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
-  })
-})
+// $( document ).ready(function(){
+//   $(".favorite").click(function(){
+//     let favoriteId = $(this).find(".favorite-Id").text();
+//     axios.post(`/shits/${favoriteId}/favorite`)
+//     console.log('pasa')
+
+//   })
+// })
 
 
  

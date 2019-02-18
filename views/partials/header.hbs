@@ -5,15 +5,28 @@
     <form action="/user/logout" method="post">
       <button class="btn btn-send" type="submit"><i class="fas fa-sign-out-alt"></i> logout</button>
     </form>
-  </div>
+    {{!-- <a onclick="return false;" href='javascript:document.location="http://localhost:3000/shits/bookmarkletadd?url="+escape(document.location.href);'>⤵</a>--}}
+  </div> 
   <div class="add-url">
-    <input type="text" name="name" id="searchBar" placeholder="Search..."><i class="fas fa-search"></i>
+    <input type="text" name="name" id="searchBar" placeholder="Buscar..."><i class="fas fa-search"></i>
     <div class="vertical"></div>
     <form action="/shits" method="post">
-      <input type="text" name="name" placeholder="Title...">
+      <input type="text" name="name" placeholder="Título...">
       <input type="text" name="url" placeholder="http://...">
       <button class="btn btn-send" type="submit"><i class="fas fa-plus"></i> add mierda</button>
     </form>
   </div>
+
+  <div id="menuNav" class="add-url-mobile">
+    <div id="menuClose" class="add-url-mobile-close"><i class="fas fa-times close"></i></div>
+    <form action="/shits" method="post">
+    <p>Añade tu mierda</p>
+      <input type="text" name="name" placeholder="Título...">
+      <input type="text" name="url" placeholder="http://...">
+      <button class="btn btn-send" type="submit"><i class="fas fa-plus"></i> add mierda</button>
+    </form>
+  </div>
+
+  <div id="burger"><i class="fas fa-bars"></i></div>
 
 </header>

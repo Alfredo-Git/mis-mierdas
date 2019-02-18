@@ -12,8 +12,11 @@
           {{get_video_stream mierda}}
         </div>
         <div class="icons">
+          <form action="/videos/{{mierda.id}}/favorite" method="post">
+            <button type="submit"><i class="fas fa-star{{#if mierda.favorite}} favorite {{/if}}"></i></button>
+          </form> 
             <i class="fas fa-pencil-alt"></i>
-          <form action="/shits/{{mierda.id}}/delete" method="post">
+          <form action="/videos/{{mierda.id}}/delete" method="post">
             <button type="submit"><i class="fas fa-trash-alt"></i></button>
           </form> 
           <a href="{{mierda.url}}" target="_blank"><i class="fas fa-link"></i></a>
@@ -22,7 +25,7 @@
       <div class="box-info-content">
         <div class="box-info"></div>
           <h2 class="h2Names">{{mierda.name}}</h2>
-          <form action="/shits/{{mierda.id}}/update" method="post">
+          <form action="/videos/{{mierda.id}}/update" method="post">
             <input type="text" name="name" placeholder="{{mierda.name}}">
             <button class="btn btn-send" type="submit"><i class="fas fa-pencil-alt"></i> update</button>
             <i class="fas fa-times close"></i>

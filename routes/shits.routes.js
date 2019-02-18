@@ -7,8 +7,9 @@ const authMiddleware = require('../middlewares/auth.middleware');
 
 router.get('/', authMiddleware.isAuthenticated, shitsController.list);
 router.post('/', authMiddleware.isAuthenticated, shitsController.doCreate);
+router.get('/bookmarkletadd', authMiddleware.isAuthenticated, shitsController.doCreate);
 router.post('/:id/delete', authMiddleware.isAuthenticated, shitsController.doDelete);
 router.post('/:id/update', authMiddleware.isAuthenticated, shitsController.update);
-router.post('/favorite', authMiddleware.isAuthenticated, shitsController.favorite);
+router.post('/:id/favorite', authMiddleware.isAuthenticated, shitsController.favorite);
 
 module.exports = router;

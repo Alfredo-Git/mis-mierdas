@@ -16,7 +16,15 @@ module.exports.list = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
-  const { url, name } = req.body;
+  let url = null;
+  let name = null;
+  if (req.method === 'POST') {
+    url = req.body.url;
+    name = req.body.name;
+  } else {
+    url = req.query.url;
+    name = '';
+  }
   resourcesService.get(url)
     .then(datos => {
       const mierda = new Mierda(datos);
@@ -35,28 +43,29 @@ module.exports.doCreate = (req, res, next) => {
 }
 
 module.exports.favorite = (req, res, next) => {
-  console.info('Se hace!')
-  Mierda.findById(req.params.id)
+  Mierda.findById(req.params.id, function(err, mierda) {
+    mierda.favorite = !mierda.favorite;
+    mierda.save()
     .then(mierda => {
-      console.info('MIERDON => ', mierda)
-      mierda.favorite = !mierda.favorite
-      mierda.save()
+      if (!mierda) {
+        next(createError(404, 'Mierda not found'));
+      } else {
+        res.redirect('/shits');
+      }
     })
-    .catch(() => console.info('No encontramos cacota'))
-  // Mierda.findById(req.params.id, function(err, mierda) {
-  //   mierda.favorite = !mierda.favorite;
-  //   mierda.save()
-  //   .then(mierda => {
-  //     if (!mierda) {
-  //       next(createError(404, 'Mierda not found'));
-  //     } else {
-  //       console.log('axios')
-  //       // res.redirect('/shits');
-  //     }
-  //   })
-  //   .catch(error => next(error));
-  // })
+    .catch(error => next(error));
+  })
 }
+
+// module.exports.favorite = (req, res, next) => {
+//   console.info('Se hace!')
+//   Mierda.findById(req.params.id)
+//     .then(mierda => {
+//       console.info('MIERDON => ', mierda)
+//       mierda.favorite = !mierda.favorite
+//       mierda.save()
+//     })
+//     .catch(() => console.info('No encontramos cacota'))
 
 /**
  * 
