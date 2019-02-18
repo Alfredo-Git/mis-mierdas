@@ -38,8 +38,9 @@ $( document ).ready(function(){
     menu.classList.remove('openMenu');
     body.classList.remove('overflowHidden');
   });
-  // ul = $('.content ul');
-  // ul.children().each(function(i,li){ul.prepend(li)})
+  const ul = $('.content ul');
+  ul.children().each(function(i,li){ul.prepend(li)})
+
 });
 
 // $( document ).ready(function(){

@@ -6,7 +6,7 @@
   <ul>
     {{#each mierdas as |mierda| }}
     {{#if mierda.urlVideo }}
-    <li>
+   <li>
       <div class="box">
         <div class="zoom-nail">
           {{get_video_stream mierda}}
@@ -15,7 +15,7 @@
           <form action="/videos/{{mierda.id}}/favorite" method="post">
             <button type="submit"><i class="fas fa-star{{#if mierda.favorite}} favorite {{/if}}"></i></button>
           </form> 
-            <i class="fas fa-pencil-alt"></i>
+          <i class="fas fa-pencil-alt"></i>
           <form action="/videos/{{mierda.id}}/delete" method="post">
             <button type="submit"><i class="fas fa-trash-alt"></i></button>
           </form> 
@@ -23,13 +23,14 @@
         </div>
       </div>
       <div class="box-info-content">
-        <div class="box-info"></div>
-          <h2 class="h2Names">{{mierda.name}}</h2>
+        <div class="box-info">
+          <h2>{{mierda.name}}</h2>
           <form action="/videos/{{mierda.id}}/update" method="post">
             <input type="text" name="name" placeholder="{{mierda.name}}">
             <button class="btn btn-send" type="submit"><i class="fas fa-pencil-alt"></i> update</button>
             <i class="fas fa-times close"></i>
           </form>
+        </div>
       </div>
     </li>
     {{/if}}

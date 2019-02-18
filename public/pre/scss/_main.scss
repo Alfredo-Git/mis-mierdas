@@ -145,3 +145,14 @@
 .favorite {
   color: yellow;
 }
+
+#mrpoo {
+  position: absolute;
+  top: 50%;
+  right: -140px;
+  @include transition (all .4s linear);
+}
+
+.move {
+  right: 20px !important;
+}

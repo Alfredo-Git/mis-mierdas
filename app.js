@@ -9,6 +9,7 @@ const session = require('express-session');
 const MongoStore = require("connect-mongo")(session);
 const passport = require('passport');
 const mongoose = require('mongoose');
+// const favicon = require('serve-favicon');
 
 require('./configs/db.config');
 require('./configs/hbs.config');
@@ -22,6 +23,8 @@ const webRouter = require('./routes/web.routes');
 const favoriteRouter = require('./routes/favorite.routes');
 
 const app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -62,6 +65,7 @@ app.use('/videos', videoRouter);
 app.use('/urls', webRouter);
 app.use('/favorites', favoriteRouter)
 
+// app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

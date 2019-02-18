@@ -37,7 +37,13 @@ module.exports.doCreate = (req, res, next) => {
       }
       if (mierda.url.match(/(youtube|vimeo|streamable)/i)) { mierda.urlVideo = true, mierda.urlWeb = false }
       return mierda.save()
-         .then(mierda => res.redirect('/shits'))
+         .then(mierda => {
+            if (req.method === "GET" && req.query.url) {
+              res.redirect( req.query.url );  
+            } else {
+              res.redirect( '/shits' );
+            }
+         })
     })
     .catch(error => next(error));
 }
